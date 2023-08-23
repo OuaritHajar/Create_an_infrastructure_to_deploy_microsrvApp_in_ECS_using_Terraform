@@ -34,15 +34,10 @@ resource "aws_iam_policy" "ecs_task_policy" {
           "logs:CreateLogStream",
           "logs:PutLogEvents",
           "logs:CreateLogGroup",
-          "logs:DescribeLogStreams",
-          "ecr:CompleteLayerUpload",
-          "ecr:GetLifecyclePolicy",
-          "ecr:InitiateLayerUpload",
-          "ecr:PutImage",
-          "ecr:UploadLayerPart"
+          "logs:DescribeLogStreams"
         ],
         Effect = "Allow",
-        Resource = "258076216385.dkr.ecr.us-east-1.amazonaws.com/repository"
+        Resource = "*"
       }
     ]
   })
@@ -52,3 +47,4 @@ resource "aws_iam_role_policy_attachment" "ecs_task_policy_attachment" {
   policy_arn = aws_iam_policy.ecs_task_policy.arn
   role       = aws_iam_role.ecs_task_role.name
 }
+
