@@ -30,12 +30,6 @@ pipeline {
                  sh 'aws ecr create-repository --repository-name repo_mongo --region us-east-1'
             }
         }
-        stage('tag the images') {
-            steps {
-                sh  'docker tag hajarouarit/srv-client:client    '
-                sh 'docker tag hajarouarit/srv-api:api     '
-                sh 'docker tag hajarouarit/srv-mongo:mongo   '
-            }
-        }
+       
    }
 }
