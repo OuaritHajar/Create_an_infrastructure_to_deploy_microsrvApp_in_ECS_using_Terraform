@@ -18,7 +18,10 @@ pipeline {
         }
         stage('Pull the images') {
             steps {
-                sh 'docker pull api'
-                sh 'docker pull client'
-                sh 'docker pull mongo'
+                sh 'docker pull hajarouarit/srv-api:api'
+                sh 'docker pull hajarouarit/srv-client:client'
+                sh 'docker pull hajarouarit/srv-mongo:mongo'
+            }
         }
+   }
+}
