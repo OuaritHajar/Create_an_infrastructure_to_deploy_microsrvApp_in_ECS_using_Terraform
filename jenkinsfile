@@ -23,5 +23,13 @@ pipeline {
                 sh 'docker pull hajarouarit/srv-mongo:mongo'
             }
         }
+        stage('Create Repositories') {
+             steps {
+                 sh 'aws ecr create-repository --repository-name repo_api --region us-east-1'
+                 sh 'aws ecr create-repository --repository-name repo-client --region us-east-1'
+                 sh 'aws ecr create-repository --repository-name repo_mongo --region us-east-1'
+            }
+        }
+        
    }
 }
