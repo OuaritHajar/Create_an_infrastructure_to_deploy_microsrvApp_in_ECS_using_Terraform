@@ -154,3 +154,9 @@ resource "aws_vpc_endpoint" "cloudwatch" {
     Name = "CloudWatch VPC Endpoint Interface"
   }
 }
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> cddbdbc5d432a2e30ed1f6fef84716b5d1296f51

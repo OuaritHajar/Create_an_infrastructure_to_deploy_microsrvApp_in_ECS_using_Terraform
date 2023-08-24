@@ -25,7 +25,7 @@ module "Fargete_cluster_api"{
     app_count = var.app_count
     namespace = var.namespace
     port_mapping = var.api_port_mapping
-    service_connect_port = 4000 
+    service_connect_port = 4006 
     vpc_id = module.VPC_Network.vpc_id 
     public_subnet_ids = module.VPC_Network.Public_subnet_ids 
     private_subnet_ids = module.VPC_Network.Private_subnet_ids 
@@ -46,7 +46,7 @@ module "Fargete_cluster_client"{
     app_count = var.app_count
     namespace = var.namespace
     port_mapping = var.client_port_mapping
-    service_connect_port = 3000
+    service_connect_port = 3006
     vpc_id = module.VPC_Network.vpc_id 
     public_subnet_ids = module.VPC_Network.Public_subnet_ids 
     private_subnet_ids = module.VPC_Network.Private_subnet_ids 
@@ -67,7 +67,7 @@ module "Fargete_cluster_db"{
     app_count = var.app_count
     namespace = var.namespace
     port_mapping = var.db_port_mapping
-    service_connect_port = 27017
+    service_connect_port = 27006
     vpc_id = module.VPC_Network.vpc_id 
     public_subnet_ids = module.VPC_Network.Public_subnet_ids 
     private_subnet_ids = module.VPC_Network.Private_subnet_ids 
