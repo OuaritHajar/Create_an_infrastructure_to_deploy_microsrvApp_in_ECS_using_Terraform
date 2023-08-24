@@ -41,7 +41,7 @@ resource "aws_security_group" "ecs_grp" {
   ingress {
     protocol    = "tcp"
     from_port   = var.app_port
-    to_port     = var.app_port+1
+    to_port     = var.app_port
     cidr_blocks = ["10.0.0.0/16"]
   }
    egress {
@@ -84,4 +84,6 @@ resource "aws_lb_listener" "nlb_listener" {
     type             = "forward"
   }
 }
+
+
 
