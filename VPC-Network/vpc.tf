@@ -7,7 +7,7 @@ resource "aws_vpc" "VPC" {
     Name = "VPC"
   }
 }
-resource "aws_internet_gateway" "gw" { 
+resource "aws_internet_gateway" "gw" {
   vpc_id = aws_vpc.VPC.id
   tags = {
     Name = "gw"
@@ -154,9 +154,3 @@ resource "aws_vpc_endpoint" "cloudwatch" {
     Name = "CloudWatch VPC Endpoint Interface"
   }
 }
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> cddbdbc5d432a2e30ed1f6fef84716b5d1296f51
