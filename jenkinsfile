@@ -27,9 +27,16 @@ pipeline {
              steps {
                  withAWS(credentials: 'aws-key', region: AWS_DEFAULT_REGION){
                  sh 'aws ecr create-repository --repository-name repo_api --region us-east-1'
-                 sh 'aws ecr create-repository --repository-name repo-client --region us-east-1'
+                 sh 'aws ecr create-repository --repository-name repo_client --region us-east-1'
                  sh 'aws ecr create-repository --repository-name repo_mongo --region us-east-1'
                 }
+            }
+        }
+        stage('tag the images') {
+            steps {
+                sh 'docker tag hajarouarit/srv-client:client 377764184470.dkr.ecr.us-east-1.amazonaws.com/repo_client:client'
+                sh 'docker tag hajarouarit/srv-api:api 377764184470.dkr.ecr.us-east-1.amazonaws.com/repo_api:api'
+                sh 'docker tag hajarouarit/srv-mongo:mongo 377764184470.dkr.ecr.us-east-1.amazonaws.com/repo_mongo:mongo'
             }
         }
        
