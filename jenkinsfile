@@ -56,6 +56,13 @@ pipeline {
                  sh 'terraform init -reconfigure'
             }   
         }
+         stage('Terraform Test'){
+             steps{
+                 sh 'terraform fmt'
+                 sh"terraform validate"
+                 sh 'terraform plan -out=tfplan'
+            }
+        }
        
    }
 }
