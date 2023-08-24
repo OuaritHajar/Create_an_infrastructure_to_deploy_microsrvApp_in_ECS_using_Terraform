@@ -7,7 +7,7 @@ resource "aws_vpc" "VPC" {
     Name = "VPC"
   }
 }
-resource "aws_internet_gateway" "gw" {
+resource "aws_internet_gateway" "gw" { 
   vpc_id = aws_vpc.VPC.id
   tags = {
     Name = "gw"
