@@ -5,7 +5,7 @@ resource "aws_ecs_service" "main" {
   launch_type     = "FARGATE"
   desired_count   = var.app_count
 
-  network_configuration { 
+  network_configuration {
     subnets = var.private_subnet_ids
     security_groups =["${aws_security_group.ecs_grp.id}"] 
   }
@@ -86,7 +86,4 @@ resource "aws_lb_listener" "nlb_listener" {
 }
 
 
-<<<<<<< HEAD
-=======
 
->>>>>>> cddbdbc5d432a2e30ed1f6fef84716b5d1296f51
