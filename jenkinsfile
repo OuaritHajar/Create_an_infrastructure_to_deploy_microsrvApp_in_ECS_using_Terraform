@@ -8,7 +8,7 @@ pipeline {
             steps {
                  script{
                      git(
-                         url: "https://github.com/OuaritHajar/Create_an_infrastructure_to_deploy_microsrvApp_in_ECS_using_Terraform/tree/main",
+                         url: "https://github.com/OuaritHajar/Create_an_infrastructure_to_deploy_microsrvApp_in_ECS_using_Terraform",
                          branch: "main",
                          changelog: true,
                          poll: true
