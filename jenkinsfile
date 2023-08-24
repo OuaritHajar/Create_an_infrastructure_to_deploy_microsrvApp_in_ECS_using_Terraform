@@ -1,0 +1,24 @@
+pipeline {
+    agent any
+    environment {
+        AWS_DEFAULT_REGION = 'us-east-1' 
+    }
+    stages {
+        stage('Clone repository') {
+            steps {
+                 script{
+                     git(
+                         url: "https://github.com/OuaritHajar/Create_an_infrastructure_to_deploy_microsrvApp_in_ECS_using_Terraform",
+                         branch: "main",
+                         changelog: true,
+                         poll: true
+                        )
+                 }
+            } 
+        }
+        stage('Pull the images') {
+            steps {
+                sh 'docker pull api'
+                sh 'docker pull client'
+                sh 'docker pull mongo'
+        }

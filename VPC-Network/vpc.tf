@@ -14,8 +14,12 @@ resource "aws_internet_gateway" "gw" {
   }
 }
 
+resource "aws_eip" "ip" {
+  domain = "vpc"
+}
+
 resource "aws_nat_gateway" "Nat" {
-  connectivity_type = "private"
+  allocation_id = aws_eip.ip.id
   subnet_id         = aws_subnet.Public_Subnet[1].id
   tags = {
     Name = "Nat"
@@ -86,9 +90,9 @@ resource "aws_security_group" "SGrp" {
   name   = "SGrp"
   vpc_id = aws_vpc.VPC.id
   ingress {
-      from_port = 443
-      to_port = 443
-      protocol = "tcp"
+      from_port = 0
+      to_port = 0
+      protocol = "-1"
       cidr_blocks = [var.vpc_cidr_block]
   }
   egress {
@@ -150,4 +154,3 @@ resource "aws_vpc_endpoint" "cloudwatch" {
     Name = "CloudWatch VPC Endpoint Interface"
   }
 }
-
