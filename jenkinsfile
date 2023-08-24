@@ -25,6 +25,7 @@ pipeline {
         }
         stage('Create Repositories') {
              steps {
+                 withAWS(credentials: 'aws-key', region: AWS_DEFAULT_REGION)
                  sh 'aws ecr create-repository --repository-name repo_api --region us-east-1'
                  sh 'aws ecr create-repository --repository-name repo-client --region us-east-1'
                  sh 'aws ecr create-repository --repository-name repo_mongo --region us-east-1'
