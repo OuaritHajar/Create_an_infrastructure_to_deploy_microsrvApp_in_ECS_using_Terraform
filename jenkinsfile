@@ -67,7 +67,9 @@ pipeline {
         }
         stage('Terraform Apply') {
              steps {
+                 withAWS(credentials: 'aws-key', region: AWS_DEFAULT_REGION){
                  sh 'terraform apply "tfplan"'
+                }
             }
         }
        
