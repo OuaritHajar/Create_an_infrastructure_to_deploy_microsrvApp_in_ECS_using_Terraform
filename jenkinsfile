@@ -58,9 +58,11 @@ pipeline {
         }
          stage('Terraform Test'){
              steps{
-                 sh 'terraform fmt'
-                 sh"terraform validate"
-                 sh 'terraform plan -out=tfplan'
+                  withAWS(credentials: 'aws-key', region: AWS_DEFAULT_REGION){
+                     sh 'terraform fmt'
+                     sh"terraform validate"
+                     sh 'terraform plan -out=tfplan'
+                 }
             }
         }
        
