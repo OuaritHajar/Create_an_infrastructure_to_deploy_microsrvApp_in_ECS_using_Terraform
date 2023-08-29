@@ -34,19 +34,19 @@ pipeline {
         }
         stage('tag the images') {
             steps {
-                sh 'docker tag hajarouarit/srv-client:client 377764184470.dkr.ecr.us-east-1.amazonaws.com/repo_client:client'
-                sh 'docker tag hajarouarit/srv-api:api 377764184470.dkr.ecr.us-east-1.amazonaws.com/repo_api:api'
-                sh 'docker tag hajarouarit/srv-mongo:mongo 377764184470.dkr.ecr.us-east-1.amazonaws.com/repo_mongo:mongo'
+                sh 'docker tag hajarouarit/srv-client:client 635087241766.dkr.ecr.us-east-1.amazonaws.com/repo_client:client'
+                sh 'docker tag hajarouarit/srv-api:api 635087241766.dkr.ecr.us-east-1.amazonaws.com/repo_api:api'
+                sh 'docker tag hajarouarit/srv-mongo:mongo 635087241766.dkr.ecr.us-east-1.amazonaws.com/repo_mongo:mongo'
             }
         }
         stage('Push to ECR') {
             steps {
                 script {
                     withAWS(credentials: 'aws-key', region:'${AWS_DEFAULT_REGION}') {
-                         sh "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 377764184470.dkr.ecr.us-east-1.amazonaws.com"
-                         sh 'docker push 377764184470.dkr.ecr.us-east-1.amazonaws.com/repo_client:client'
-                         sh 'docker push 377764184470.dkr.ecr.us-east-1.amazonaws.com/repo_api:api'
-                         sh 'docker push 377764184470.dkr.ecr.us-east-1.amazonaws.com/repo_mongo:mongo'
+                         sh "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 635087241766.dkr.ecr.us-east-1.amazonaws.com"
+                         sh 'docker push 635087241766.dkr.ecr.us-east-1.amazonaws.com/repo_client:client'
+                         sh 'docker push 635087241766.dkr.ecr.us-east-1.amazonaws.com/repo_api:api'
+                         sh 'docker push 635087241766.dkr.ecr.us-east-1.amazonaws.com/repo_mongo:mongo'
                     }
                 }
             }
